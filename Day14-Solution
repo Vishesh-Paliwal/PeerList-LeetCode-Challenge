@@ -1,0 +1,23 @@
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> st = new Stack<>();
+        for(int i =0 ; i<s.length() ; i++){
+            if(st.isEmpty()){
+                st.push(s.charAt(i));
+            }
+
+            else if(isCounter(st.peek(), s.charAt(i))){
+                st.pop();
+            }
+            else st.push(s.charAt(i));
+        }
+        return st.isEmpty();
+    }
+
+    public static boolean isCounter(char a , char b){
+        if(a == '(' && b==')') return true;
+        if(a == '{' && b=='}') return true;
+        if(a == '[' && b==']') return true;
+        return false;
+    }
+}
